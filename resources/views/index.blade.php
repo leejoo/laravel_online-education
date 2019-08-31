@@ -1,0 +1,3 @@
+{{ app()->getLocale() }}
+
+{{$name}}
