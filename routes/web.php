@@ -13,6 +13,6 @@
 //后台路由
 
 Route::group(['prefix'=>'admin'], function () {
-	Route::get('public/login','Admin/PublicConteoller@login');
+	Route::get('public/login','Admin\PublicController@login');
     //return view('welcome');
 });
