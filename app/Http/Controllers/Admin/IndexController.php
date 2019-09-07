@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class IndexController extends Controller
+{
+    //Ê×Ò³
+	public function index() {
+		
+		return view('admin.index.index');
+	}
+
+	//»¶Ó­Ò³Ãæ
+	public function welcome() {
+		
+		return view('admin.index.welcome');
+	}
+}
