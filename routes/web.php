@@ -13,6 +13,11 @@
 //后台路由
 
 Route::group(['prefix'=>'admin'], function () {
+	//后台登录页面
 	Route::get('public/login','Admin\PublicController@login');
-    //return view('welcome');
+	//后台登录处理
+    Route::post('public/login','Admin\PublicController@login');
+	Route::get('index/index','Admin\IndexController@index');
+	Route::get('index/welcome','Admin\IndexController@welcome');
+
 });
