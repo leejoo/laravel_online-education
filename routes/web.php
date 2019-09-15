@@ -26,4 +26,7 @@ Route::group(['prefix'=>'admin','middleware' => 'auth:admin'], function () {
 	Route::get('index/index','Admin\IndexController@index');
 	Route::get('index/welcome','Admin\IndexController@welcome');
 
+	//用户管理
+	Route::get('manager/index','Admin\ManagerController@index');
+
 });
