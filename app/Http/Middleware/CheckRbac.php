@@ -19,12 +19,15 @@ class CheckRbac
     {
 		if(Auth::guard('admin')->user()->role_id!=1){
 			$router = Route::currentRouteAction();
-			
-
 			$role = Auth::guard('admin')->user()->role->auth_ac;
-			dd($role);
-		
-		
+			$role =strtolower($role."IndexController@index,IndexController@welcome");
+
+			//判断权限
+			$router = explode("\\",$router);
+			
+			if(strpos($role,strtolower(end($router)))===false){
+				exit("未授权,禁止访问");
+			}
 		};
         return $next($request);
     }

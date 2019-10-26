@@ -29,4 +29,9 @@ class PublicController extends Controller
 		}
 		return view('admin.public.login');
 	}
+
+	public function logout() {
+		Auth::logout();
+		return redirect()->intended('/admin/public/login');
+	}
 }

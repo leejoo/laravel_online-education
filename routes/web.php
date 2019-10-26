@@ -18,6 +18,9 @@ Route::group(['prefix'=>'admin'], function () {
 
 	//后台登录处理
     Route::post('public/login','Admin\PublicController@login');
+
+	Route::get('public/logout','Admin\PublicController@logout');
+	
 });
 
 //需要登录验证的
