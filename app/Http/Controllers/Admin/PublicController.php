@@ -8,7 +8,7 @@ use Auth;
 
 class PublicController extends Controller
 {
-    //登录
+    //鐧诲綍
 	public function login(Request $request) {
 		
 		if ($request->isMethod('post')) {
@@ -20,7 +20,7 @@ class PublicController extends Controller
 
 			$result = Auth::guard('admin')->attempt(['username' => $request->username, 'password' => $request->password,'status'=>1],$request->online);
 			if($result){
-				//认证成功
+				//璁よ瘉鎴愬姛
 				return redirect()->intended('/admin/index/index');
 			}else{
 				return redirect()->intended('/admin/public/login');

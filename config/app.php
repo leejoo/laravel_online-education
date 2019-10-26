@@ -179,6 +179,8 @@ return [
 
 		Mews\Captcha\CaptchaServiceProvider::class,//验证码
 
+		App\Providers\ResponseDiyjsonServiceProvider::class,//自定义JSON
+
     ],
 
     /*
@@ -229,6 +231,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 		//验证码
 		'Captcha' => Mews\Captcha\Facades\Captcha::class,
+
+		'Input' => Illuminate\Support\Facades\Input::class,
     ],
 
 ];

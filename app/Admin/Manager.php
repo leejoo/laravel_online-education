@@ -14,4 +14,10 @@ class Manager extends Model implements \Illuminate\Contracts\Auth\Authenticatabl
 
 	//使用trait  相当于复制代码
 	use Authenticatable;
+
+	//定义与角色模型的关联模型
+
+	public function role() {
+		return $this->hasOne('App\Admin\Role',"id","role_id");
+	}
 }

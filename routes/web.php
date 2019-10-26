@@ -21,12 +21,30 @@ Route::group(['prefix'=>'admin'], function () {
 });
 
 //需要登录验证的
-Route::group(['prefix'=>'admin','middleware' => 'auth:admin'], function () {
+Route::group(['prefix'=>'admin','middleware' => ['auth:admin','checkrbac']], function () {
 	//后台首页
 	Route::get('index/index','Admin\IndexController@index');
 	Route::get('index/welcome','Admin\IndexController@welcome');
 
 	//用户管理
-	Route::get('manager/index','Admin\ManagerController@index');
+	Route::any('manager/index','Admin\ManagerController@index');
+	Route::any('manager/add','Admin\ManagerController@add');
+	Route::post('manager/del','Admin\ManagerController@del');
+	Route::post('manager/status','Admin\ManagerController@status');//状态
+
+
+	//权限管理
+	Route::get('auth/index','Admin\AuthController@index');
+	Route::any('auth/add','Admin\AuthController@add');
+	Route::any('auth/edit','Admin\AuthController@edit');
+	Route::post('auth/del','Admin\AuthController@del');
+
+	//角色管理
+	Route::get('role/index','Admin\RoleController@index');
+	Route::any('role/add','Admin\RoleController@add');
+	Route::any('role/edit','Admin\RoleController@edit');
+	Route::post('role/del','Admin\RoleController@del');
+	Route::any('role/assign','Admin\RoleController@assign');//角色授权
+	
 
 });
