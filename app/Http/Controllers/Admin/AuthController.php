@@ -54,8 +54,16 @@ class AuthController extends Controller
 			return $res?"1":"0";
 		}
 		$list = Auth::where("id","=",$id)->first();
-		$channel = Auth::where("pid","=","0")->get();
-		return view('admin.auth.edit',compact(['list','channel']));
+
+		$menus = Auth::toFormatTree(Auth::get(),'auth_name');
+		if (!empty($menus)) {
+			$menus = array_merge(array(0 => array('id' => 0, 'title_show' => '顶级菜单')), $menus);
+		} else {
+			$menus = array(0 => array('id' => 0, 'title_show' => '顶级菜单'));
+		}
+		$menus = Auth::array_to_object($menus);
+
+		return view('admin.auth.edit',compact(['list','menus']));
 	}
 
 

@@ -25,12 +25,11 @@
 		</div>
 	</div>
 	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3">父级权限：</label>
+		<label class="form-label col-xs-4 col-sm-3">上级：</label>
 		<div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;">
 			<select class="select" name="pid" id="pid" size="1">
-				<option value="0" @if($list->pid==0) selected @endif>作为顶级权限</option>
-				@foreach ($channel as  $vo)
-					<option value="{{$vo->id}}" @if($list->pid==$vo->id) selected @endif >{{$vo->auth_name}}</option>
+				@foreach ($menus as  $vo)
+					<option value="{{$vo->id}}" @if($vo->id==$list->pid) selected @endif>{{$vo->title_show}}</option>
 				@endforeach
 			</select>
 		</span> </div>
