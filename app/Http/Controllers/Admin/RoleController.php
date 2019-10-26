@@ -29,14 +29,8 @@ class RoleController extends Controller
 		if(Input::method() == "POST"){
 			
 		}
-		$data = Auth::where("pid","=",0)->get();
-		
-		if($data){
-			foreach ($data as $k=>$v){
-				$data[$k]['next'] = Auth::where("pid","=",$v["id"])->get();
-			}
-		}
-
+		$data = Auth::array_to_object(Auth::toFormatTree(Auth::get(),'auth_name'));
+		//dd($data);
 		return view('admin.role.assign',compact('data'));
 	}
 }

@@ -89,7 +89,7 @@ class Auth extends Model {
 		if (empty($list)) {
 			return false;
 		}
-		$list = json_decode(json_encode( $list),true);		
+		$list = json_decode(json_encode($list),true);		
 		$list = $this->list_to_tree($list,$pk,$pid,'_child',$root);
 		$this->formatTree = array();
 		$this->_toFormatTree($list);
