@@ -13,7 +13,7 @@
 		<button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜用户</button>
 	</div>
 	</form>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="admin_add('添加管理员','add','800','500')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加用户</a></span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="admin_add('添加管理员','add','800','500')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加用户</a></span> </div>
 	<table class="table table-border table-bordered table-bg">
 		<thead>
 			<tr>
@@ -55,7 +55,7 @@
 				<a style="text-decoration:none" onClick="admin_start(this,{{$vo->id}})" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe615;</i></a> 
 
 				@endif
-				<a title="编辑" href="javascript:;" onclick="admin_edit('管理员编辑','admin-add.html','1','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> 
+				<a title="编辑" href="javascript:;" onclick="admin_edit('管理员编辑','edit',{{$vo->id}},'800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> 
 				
 				<a title="删除" href="javascript:;" onclick="admin_del(this,{{$vo->id}})" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
 				
@@ -111,7 +111,7 @@ function admin_del(obj,id){
 
 /*管理员-编辑*/
 function admin_edit(title,url,id,w,h){
-	layer_show(title,url,w,h);
+	layer_show(title,url+"?id="+id,w,h);
 }
 /*管理员-停用*/
 function admin_stop(obj,id){

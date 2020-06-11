@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Admin\Manager;
+use App\Admin\Role;
 use Input;
 
 class ManagerController extends BaseController
@@ -30,7 +31,26 @@ class ManagerController extends BaseController
 			]);
 			return $res?"1":"0";
 		}
-		return view('admin.manager.add');
+		$role = Role::pluck('role_name','id');
+
+		return view('admin.manager.add',compact("role"));
+	}
+
+	public function edit() {
+		$id=Input::get("id");
+		if(Input::method() == "POST"){
+			$data = Input::except("_token");
+			if(empty($data["password"])){
+				unset($data["password"]);
+			}else{
+				$data["password"] = bcrypt($data["password"]);
+			}
+			$res = Manager::where("id","=",$id)->update($data);
+			return $res?"1":"0";
+		}
+		$user = Manager::where("id","=",$id)->first();
+		$role = Role::pluck('role_name','id');
+		return view('admin.manager.edit',compact(["user","role"]));
 	}
 
 	public function del() {

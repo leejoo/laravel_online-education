@@ -10,6 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//前台首页
+	Route::get('/','Front\IndexController@index');
+	Route::get('/view','Front\IndexController@view');
+
 //后台路由
 
 Route::group(['prefix'=>'admin'], function () {
@@ -32,6 +37,7 @@ Route::group(['prefix'=>'admin','middleware' => ['auth:admin','checkrbac']], fun
 	//用户管理
 	Route::any('manager/index','Admin\ManagerController@index');
 	Route::any('manager/add','Admin\ManagerController@add');
+	Route::any('manager/edit','Admin\ManagerController@edit');
 	Route::post('manager/del','Admin\ManagerController@del');
 	Route::post('manager/status','Admin\ManagerController@status');//状态
 
@@ -50,4 +56,9 @@ Route::group(['prefix'=>'admin','middleware' => ['auth:admin','checkrbac']], fun
 	Route::any('role/assign','Admin\RoleController@assign');//角色授权
 	
 
+	//新闻管理
+	Route::get('news/index','Admin\NewsController@index');
+	Route::any('news/add','Admin\NewsController@add');
+	Route::any('news/edit','Admin\NewsController@edit');
+	Route::post('news/del','Admin\NewsController@del');
 });

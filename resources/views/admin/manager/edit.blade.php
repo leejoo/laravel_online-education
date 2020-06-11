@@ -7,7 +7,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="username" name="username">
+				<input type="text" class="input-text" value="{{$user->username}}" placeholder="" id="username" name="username">
 			</div>
 		</div>
 		<div class="row cl">
@@ -20,15 +20,15 @@
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>性别：</label>
 			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
 				<div class="radio-box">
-					<input name="gender" type="radio" id="gender-1" value="1" checked>
+					<input name="gender" type="radio" id="gender-1" value="1" @if($user->gender==1)checked @endif>
 					<label for="gender-1">男</label>
 				</div>
 				<div class="radio-box">
-					<input type="radio" id="gender-2" name="gender" value="2">
+					<input type="radio" id="gender-2" name="gender" value="2" @if($user->gender==2)checked @endif>
 					<label for="gender-2">女</label>
 				</div>
 				<div class="radio-box">
-					<input type="radio" id="gender-3" name="gender" value="3">
+					<input type="radio" id="gender-3" name="gender" value="3" @if($user->gender==3)checked @endif>
 					<label for="gender-3">保密</label>
 				</div>
 			</div>
@@ -36,13 +36,13 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>手机：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="mobile" name="mobile">
+				<input type="text" class="input-text" value="{{$user->mobile}}" placeholder="" id="mobile" name="mobile">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>邮箱：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" placeholder="@" name="email" id="email">
+				<input type="text" class="input-text" placeholder="@" name="email" id="email" value="{{$user->email}}">
 			</div>
 		</div>
 		
@@ -52,7 +52,7 @@
 				<select class="select" size="1" name="role_id">
 					<option value="">请选择</option>
 					@foreach($role as $k=>$v)
-						<option value="{{$k}}" >{{$v}}</option>
+						<option value="{{$k}}" @if($user->role_id==$k) selected @endif>{{$v}}</option>
 					@endforeach
 				</select>
 				</span> </div>
@@ -77,26 +77,7 @@ $(function(){
 	});
 	
 	$("#form-member-add").validate({
-		rules:{
-			username:{
-				required:true,
-				minlength:2,
-				maxlength:16
-			},
-			password:{
-				required:true,
-				minlength:2,
-				maxlength:16
-			},
-			mobile:{
-				required:true,
-				isMobile:true,
-			},
-			email:{
-				required:true,
-				email:true,
-			},
-		},
+		rules:{},
 		onkeyup:false,
 		focusCleanup:true,
 		success:"valid",
